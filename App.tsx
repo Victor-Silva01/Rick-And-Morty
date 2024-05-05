@@ -5,7 +5,7 @@ import {api} from './service/api';
 export default function App() {
   const [characterNames, setCharacterNames] = useState<string[]>([]);
 
-  /*useEffect(() => {
+  useEffect(() => {
     const fetchCharacterNames = async () => {
       try {
         const response = await api.get('/character');
@@ -18,12 +18,14 @@ export default function App() {
     };
 
     fetchCharacterNames();
-  }, []);*/
+  }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Rick and Morty!</Text>
-     
+      {characterNames.map((name, index) => (
+        <Text key={index} style={styles.characterName}>{name}</Text>
+      ))}
     </View>
   );
 }
