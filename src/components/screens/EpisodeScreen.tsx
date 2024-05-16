@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { api } from '../../../service/API';
-
+import { api } from '../../../service/api';
 
 const EpisodeScreen = () => {
   const [episodes, setEpisodes] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEpisodes = async () => {
       try {
-        const response = await api.get('https://api.url/episodes');
+        const response = await api.get('/episode');
         const episodesData = response.data.results;
         setEpisodes(episodesData);
-        setLoading(false);
       } catch (error) {
         console.error('Erro ao buscar episódios:', error);
-        setLoading(false);
       }
     };
 
@@ -25,22 +21,18 @@ const EpisodeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Lista de Episódios</Text>
-      {loading ? (
-        <Text>Carregando...</Text>
-      ) : (
-        <ScrollView style={styles.scrollView}>
-          <View style={styles.episodeContainer}>
-            {episodes.map((episode: any, index: number) => (
-              <View key={index} style={styles.episodeItem}>
-                <Text>Nome: {episode.name}</Text>
-                <Text>Código: {episode.episode}</Text>
-                {/* Outras informações do episódio */}
-              </View>
-            ))}
-          </View>
-        </ScrollView>
-      )}
+      <Text style={styles.text}>Rick and Morty Episodes</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.cardContainer}>
+          {episodes.map((episode: any, index: number) => (
+            <View key={index} style={styles.episodeItem}>
+              <Text style={styles.episodeTitle}>{episode.name}</Text>
+              <Text style={styles.episodeDetails}>Episode: {episode.episode}</Text>
+              <Text style={styles.episodeDetails}>Air Date: {episode.air_date}</Text>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -61,11 +53,22 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  episodeContainer: {
+  cardContainer: {
     paddingHorizontal: 10,
   },
   episodeItem: {
     marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 5,
+  },
+  episodeTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  episodeDetails: {
+    fontSize: 14,
   },
 });
 

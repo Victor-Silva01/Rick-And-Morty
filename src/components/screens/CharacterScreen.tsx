@@ -1,8 +1,7 @@
-// src/screens/CharacterScreen.tsx
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import CardItem from '../CardItem';
-import { api } from '../../../service/API';
+import { api } from '../../../service/api';
 
 
 
