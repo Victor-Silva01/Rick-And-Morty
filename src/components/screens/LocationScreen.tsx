@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     borderRadius: 5,
+    backgroundColor: '#B0E0E6', 
   },
   locationName: {
     fontSize: 18,

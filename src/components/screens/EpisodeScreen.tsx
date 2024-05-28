@@ -21,7 +21,7 @@ const EpisodeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Rick and Morty Episodes</Text>
+      <Text style={styles.text}> Episodes de Rick and Morty</Text>
       <ScrollView style={styles.scrollView}>
         <View style={styles.cardContainer}>
           {episodes.map((episode: any, index: number) => (
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     padding: 10,
     borderRadius: 5,
+    backgroundColor: '#B0E0E6', 
   },
   episodeTitle: {
     fontSize: 18,
