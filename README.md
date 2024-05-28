@@ -21,8 +21,8 @@ Clone o repositório:
 
 bash
 Copiar código
-git clone https://github.com/seu-usuario/rick-and-morty-explorer.git
-cd rick-and-morty-explorer
+git clone (https://github.com/Victor-Silva01/Rick-And-Morty.git)
+cd Rick-And-Morty
 Instale as dependências:
 
 bash
